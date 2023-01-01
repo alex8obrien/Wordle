@@ -1,6 +1,6 @@
 ﻿namespace Lib
 {
-    public class StdInp
+    public static class StdInp
     {
         /// <summary>This method can be used to retrieve a string input from the console</summary>
         /// <param name="msg">The message to be displayed to the user</param>
@@ -51,8 +51,7 @@
             do
             {
                 inp = Input($"{msg} (y/n)").ToUpper();
-
-            } while (inp != "Y" || inp != "N" || inp != "YES" || inp != "NO");
+            } while (inp != "Y" && inp != "N" && inp != "YES" && inp != "NO");
 
             switch (inp)
             {
