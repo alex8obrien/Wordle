@@ -22,8 +22,8 @@ namespace Wordle
                 
             } while (!gameOver);
             
-            Console.WriteLine("Thanks for playing!");
-            Console.WriteLine($"Your final score is {score} over {round} rounds.");
+            Console.WriteLine("\nThanks for playing!");
+            Console.WriteLine($"Your final score is {score} / {round}.");
         }
 
         private static void Introduction()
@@ -38,7 +38,7 @@ namespace Wordle
             Console.WriteLine("When you want to finish, type 'exit' to exit the game and see your score.");
             Console.WriteLine("\nIf the letter is in the correct place the letter will turn green.");
             Console.WriteLine("If the letter is in the wrong place the letter will turn yellow.");
-            Console.WriteLine("If the letter is not in the word the letter will stay white.\n");
+            Console.WriteLine("If the letter is not in the word the letter will stay white.");
         }
 
         private static string GetSecretWord()
@@ -47,7 +47,7 @@ namespace Wordle
             string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Wordle\\Files\\brit-a-z.txt";
             List<string> wordList = new List<string>();
             
-            int limit = StdInp.InputIntInBound("Please enter the length of the word you want to guess", 3, 10);
+            int limit = StdInp.InputIntInBound("\nPlease enter the length of the word you want to guess", 3, 10);
 
             using StreamReader reader = new(FILE_PATH);
             while ((reader.ReadLine() ?? null) is { } line)
