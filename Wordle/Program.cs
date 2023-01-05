@@ -9,7 +9,6 @@ namespace Wordle
             bool gameOver = false;
             int score = 0, round = 0;
             
-            Console.WriteLine("Hello, World!");
             Introduction();
 
             do
@@ -24,7 +23,7 @@ namespace Wordle
             } while (!gameOver);
             
             Console.WriteLine("Thanks for playing!");
-            Console.WriteLine($"Your final score is {score}");
+            Console.WriteLine($"Your final score is {score} over {round} rounds.");
         }
 
         private static void Introduction()
@@ -34,10 +33,12 @@ namespace Wordle
 
             if (!yn) return;
 
-            Console.WriteLine("The rules are simple, you have 6 chances to guess the correct word.");
+            Console.WriteLine("\nThe rules are simple, you have 6 chances to guess the secret word.");
             Console.WriteLine("If you guess the word correctly, you will get 1 point.");
-            Console.WriteLine("If you run out of chances, you will lose 1 point.");
             Console.WriteLine("When you want to finish, type 'exit' to exit the game and see your score.");
+            Console.WriteLine("\nIf the letter is in the correct place the letter will turn green.");
+            Console.WriteLine("If the letter is in the wrong place the letter will turn yellow.");
+            Console.WriteLine("If the letter is not in the word the letter will stay white.\n");
         }
 
         private static string GetSecretWord()
