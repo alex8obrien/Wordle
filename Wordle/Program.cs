@@ -13,7 +13,7 @@ namespace Wordle
 
             do
             {
-                score += PlayGame(GetSecretWord());
+                score += PlayGame();
                 round++;
                 
                 bool playAgain = StdInp.InputYNAsBool("Do you want to play again?");
@@ -64,9 +64,38 @@ namespace Wordle
             return wordList[index];
         }
 
-        private static int PlayGame(string secretWord)
+        private static int PlayGame()
         {
-            return -1;
+            string secretWord = GetSecretWord();
+            int guessNumber = 0, limit = secretWord.Length;
+            do
+            {
+                string guess = StdInp.Input("\nPlease enter your guess");
+
+                if (guess.Length != limit)
+                {
+                    Console.WriteLine($"Please enter a {limit} letter word");
+                    continue;
+                }
+                if (guess == "exit")
+                {
+                    Console.WriteLine("You have exited the game.");
+                    return 0;
+                }
+                if (guess == secretWord)
+                {
+                    guessNumber++;
+                    Console.WriteLine($"\nYou have guessed the word correctly, in only {guessNumber} guesses!");
+                    return 1;
+                }
+
+                guessNumber++;
+                Console.WriteLine($"\nYou have {6 - guessNumber} guesses left.");
+                CompareWords(secretWord, guess);
+                
+            } while (guessNumber < 6);
+
+            return 0;
         }
         
        private static void CompareWords(string secretWord, string guess)
