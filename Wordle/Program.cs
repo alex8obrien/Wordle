@@ -68,5 +68,29 @@ namespace Wordle
         {
             return -1;
         }
+        
+       private static void CompareWords(string secretWord, string guess)
+        {
+            for (int i = 0; i < secretWord.Length; i++)
+            {
+                if (secretWord[i] == guess[i])
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write($"{secretWord[i]} ");
+                    Console.ResetColor();
+                }
+                else if (secretWord.Contains(guess[i]))
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"{guess[i]} ");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.Write("_ ");
+                }
+            }
+            Console.WriteLine("\n");
+        }
     }
 }
