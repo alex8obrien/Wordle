@@ -43,13 +43,25 @@ namespace Wordle
 
         private static string GetSecretWord()
         {
-            string filePath = "Wordle\\Files\\brit-a-z.txt";
-            int numberOfLines = FileIO.TotalLines("Wordle\\Files\\brit-a-z.txt");
+            // ReSharper disable once InconsistentNaming
+            string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Wordle\\Files\\brit-a-z.txt";
+            List<string> wordList = new List<string>();
             
-            Random randInt = new Random();
-            int randomLine = randInt.Next(1, numberOfLines);
+            int limit = StdInp.InputIntInBound("Please enter the length of the word you want to guess", 3, 10);
 
-            return FileIO.LineAt(filePath, randomLine);
+            using StreamReader reader = new(FILE_PATH);
+            while ((reader.ReadLine() ?? null) is { } line)
+            {
+                if (line.Length == limit)
+                {
+                    wordList.Add(line);
+                }
+            }
+
+            Random random = new();
+            int index = random.Next(0, wordList.Count);
+            Console.WriteLine(wordList[index]);
+            return wordList[index];
         }
 
         private static int PlayGame(string secretWord)
