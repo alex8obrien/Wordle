@@ -6,7 +6,7 @@ namespace Wordle
     {
         public static void Main(string[] args)
         {
-            bool gameOver = false;
+            bool gameOver;
             int score = 0, round = 0;
             
             Introduction();
@@ -15,11 +15,8 @@ namespace Wordle
             {
                 score += PlayGame();
                 round++;
-                
-                bool playAgain = StdInp.InputYNAsBool("Do you want to play again?");
-                if (!playAgain)
-                { gameOver = true; }
-                
+
+                gameOver = !StdInp.InputYNAsBool("Do you want to play again?");
             } while (!gameOver);
             
             Console.WriteLine("\nThanks for playing!");
@@ -60,7 +57,6 @@ namespace Wordle
 
             Random random = new();
             int index = random.Next(0, wordList.Count);
-            Console.WriteLine(wordList[index]);
             return wordList[index];
         }
 
