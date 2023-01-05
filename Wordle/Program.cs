@@ -21,6 +21,10 @@ namespace Wordle
             
             Console.WriteLine("\nThanks for playing!");
             Console.WriteLine($"Your final score is {score} / {round}.");
+
+            if (!StdInp.InputYNAsBool("Do you want to save your scores?")) return;
+            string name = StdInp.Input("Please enter your name");
+            SaveScore(name, score, round);
         }
 
         private static void Introduction()
@@ -114,6 +118,30 @@ namespace Wordle
                 {
                     Console.Write("_ ");
                 }
+            }
+        }
+       
+        private static void SaveScore(string name, int score, int round)
+        {
+            // ReSharper disable once InconsistentNaming
+            string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Wordle\\Files\\scores.txt";
+
+            try
+            {
+                using StreamWriter writer = new(FILE_PATH, true);
+                writer.WriteLine($"{name},{score},{round}");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Console.WriteLine("You do not have permission to save your scores to the file.");
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("The file was not found.");
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("There was an error writing to the file.");
             }
         }
     }
