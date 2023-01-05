@@ -45,7 +45,7 @@ namespace Wordle
         private static string GetSecretWord()
         {
             // ReSharper disable once InconsistentNaming
-            string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Wordle\\Files\\brit-a-z.txt";
+            string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Files\\brit-a-z.txt";
             List<string> wordList = new List<string>();
             
             int limit = StdInp.InputIntInBound("\nPlease enter the length of the word you want to guess", 3, 10);
@@ -124,7 +124,7 @@ namespace Wordle
         private static void SaveScore(string name, int score, int round)
         {
             // ReSharper disable once InconsistentNaming
-            string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Wordle\\Files\\scores.txt";
+            string FILE_PATH = Directory.GetParent(Directory.GetCurrentDirectory().Split("\\bin")[0]) + "\\Files\\scores.txt";
 
             try
             {
