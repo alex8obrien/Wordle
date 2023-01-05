@@ -7,15 +7,15 @@ namespace Wordle
         public static void Main(string[] args)
         {
             bool gameOver = false;
-            int score = 0;
+            int score = 0, round = 0;
             
             Console.WriteLine("Hello, World!");
             Introduction();
 
             do
             {
-                string secretWord = GetSecretWord();
-                score += PlayGame();
+                score += PlayGame(GetSecretWord());
+                round++;
                 
                 bool playAgain = StdInp.InputYNAsBool("Do you want to play again?");
                 if (!playAgain)
@@ -51,7 +51,7 @@ namespace Wordle
             return FileIO.LineAt(filePath, randomLine);
         }
 
-        private static int PlayGame()
+        private static int PlayGame(string secretWord)
         {
             return -1;
         }
