@@ -81,12 +81,12 @@ namespace Wordle
                 if (guess == secretWord)
                 {
                     guessNumber++;
-                    Console.WriteLine($"\nYou have guessed the word correctly, in only {guessNumber} guesses!");
+                    Console.WriteLine($"You have guessed the word correctly, in only {guessNumber} guesses!");
                     return 1;
                 }
 
                 guessNumber++;
-                Console.WriteLine($"\nYou have {6 - guessNumber} guesses left.");
+                Console.WriteLine($"You have {6 - guessNumber} guesses left.\n");
                 CompareWords(secretWord, guess);
                 
             } while (guessNumber < 6);
@@ -115,7 +115,6 @@ namespace Wordle
                     Console.Write("_ ");
                 }
             }
-            Console.WriteLine("\n");
         }
     }
 }
